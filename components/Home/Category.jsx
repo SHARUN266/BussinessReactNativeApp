@@ -1,13 +1,14 @@
-import { View, Text, FlatList, Dimensions } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Colors } from "../../constants/Colors";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../config/FireBaseConfig";
 import CategoryItem from "./CategoryItem";
+import { useRouter } from "expo-router";
 
 export default function Category() {
-    const screenWidth = Dimensions.get('window').width;
-    const itemWidth = screenWidth * 0.8;
+
+  const router=useRouter()
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
     GetCategoryList();
@@ -57,7 +58,7 @@ export default function Category() {
        
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <CategoryItem   category={item} key={index}  onPressCategory={(category)=>console.log(category)} />
+          <CategoryItem   category={item} key={index}  onPressCategory={(category)=>router.push('/businesslist/'+item.name)} />
         )}
       />
     </View>

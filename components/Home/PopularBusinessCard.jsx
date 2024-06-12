@@ -10,6 +10,7 @@ export default function PopularBusinessCard({ business }) {
         padding: 10,
         backgroundColor: "#fff",
         borderRadius: 15,
+        
       }}
     >
       <Image
@@ -43,7 +44,7 @@ export default function PopularBusinessCard({ business }) {
             style={{
               fontFamily: "outfit",
               backgroundColor: Colors.PRIMARY,
-              borderRadius: 5,
+              borderRadius: 9,
               color: "#fff",
               fontSize: 12,
               padding: 3,

@@ -23,15 +23,14 @@ export default function PopularBusiness() {
 
   return (
     <View  >
-      <View
+        <View
         style={{
           display: "flex",
-          paddingLeft: 20,
-          marginBottom:10,
+          padding: 20,
           flexDirection: "row",
           justifyContent: "space-between",
-          marginTop:20
-        
+          marginTop: 10,
+       
         }}
       >
         <Text
@@ -40,12 +39,13 @@ export default function PopularBusiness() {
             fontSize: 20,
           }}
         >
-          Pupular Business
+         Popular business
         </Text>
         <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit-medium" }}>
           View All
         </Text>
       </View>
+
 
       <FlatList horizontal={true} showsHorizontalScrollIndicator={false}  data={businessList} renderItem={({item,index})=>(
           <PopularBusinessCard  business={item} key={index} />
