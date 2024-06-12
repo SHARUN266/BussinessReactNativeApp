@@ -28,11 +28,11 @@ export default function BusinessListByCategory() {
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      setBusinessList((prev) => [...prev, doc.data()]);
+      setBusinessList(prev => [...prev, {id:doc?.id,...doc.data()}]);
     });
     setIsLoading(false);
   };
-  // console.log(businessList)
+  
   return (
     <View>
       {businessList?.length > 0 && isLoading == false ? (
