@@ -6,7 +6,7 @@ import { db } from "../../config/FireBaseConfig";
 import CategoryItem from "./CategoryItem";
 import { useRouter } from "expo-router";
 
-export default function Category() {
+export default function Category({explore=false,onCategorySelect}) {
 
   const router=useRouter()
   const [categoryList, setCategoryList] = useState([]);
@@ -24,9 +24,22 @@ export default function Category() {
     });
   };
 
+  const onCategoryPressHandler=(item)=>{
+    if(!explore){
+      router.push('/businesslist/'+item.name)
+    }else{
+
+      onCategorySelect(item.name)
+
+
+    }
+
+  }
+
   return (
     <View>
-      <View
+      {
+        !explore&& <View
         style={{
           display: "flex",
           padding: 20,
@@ -48,17 +61,19 @@ export default function Category() {
           View All
         </Text>
       </View>
+      }
+     
 
       <FlatList
         data={categoryList}
         style={{ marginLeft: 20 }}
         horizontal={true}
-    
+  
 
        
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <CategoryItem   category={item} key={index}  onPressCategory={(category)=>router.push('/businesslist/'+item.name)} />
+          <CategoryItem   category={item} key={index+1}  onPressCategory={(category)=>onCategoryPressHandler(item)} />
         )}
       />
     </View>

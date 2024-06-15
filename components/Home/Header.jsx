@@ -35,8 +35,8 @@ export default function Header() {
             {user?.fullName}
           </Text>
         </View>
-        {/* Search Bar */}
       </View>
+        {/* Search Bar */}
       <View
         style={{
           display: "flex",
