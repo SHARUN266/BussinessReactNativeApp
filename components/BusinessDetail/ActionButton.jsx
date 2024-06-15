@@ -5,6 +5,8 @@ import {
   Image,
   TouchableOpacity,
   Linking,
+  Share,
+ 
 } from "react-native";
 import React from "react";
 
@@ -34,12 +36,16 @@ export default function ActionButton({ businessDetail }) {
       id: 4,
       name: "Share",
       icon: require("../../assets/images/share.png"),
-      url: businessDetail?.website,
+      url: businessDetail?.url,
     },
   ];
 
   const OnPressHandle = (item) => {
-    if(item.name=='share'){
+ 
+    if(item.name=='Share'){
+     Share.share({
+        message:businessDetail?.name+"\n Address:"+businessDetail?.address+"\n Find more details on Business Directory App by Sharun !"
+      })
         return ;
     }
     Linking.openURL(item?.url);
